@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BorneoJourney - Solusi Travel Kalimantan Selatan & Tengah</title>
+  <meta name="description" content="Layanan shuttle premium dan terpercaya menghubungkan Kalimantan Selatan dan Kalimantan Tengah dengan kenyamanan ekstra, door-to-door service, pelacakan armada real-time, dan pembayaran mudah.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Feather Icons for modern vector icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <!-- Admin mode indicator -->
+  <div class="admin-mode-banner" id="admin-mode-indicator">Mode Administrator - Borneo Journey</div>
+
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo" id="logo-home">
+        Borneo<span class="logo-accent">Journey</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link active" data-target="home-view">Schedules</a></li>
+          <li><a href="#" class="nav-link" data-target="bookings-view" id="nav-bookings">My Bookings</a></li>
+          <li><a href="#" class="nav-link" data-target="tracking-view">Fleet Tracking</a></li>
+          <li><a href="#" class="nav-link" data-target="reviews-view">Reviews</a></li>
+          <li><a href="#" class="nav-link" data-target="support-view">Support</a></li>
+          <li><a href="#" class="nav-link" data-target="admin-view" id="nav-admin" style="display: none;">Admin Panel</a></li>
+        </ul>
+      </nav>
+
+      <div class="user-profile">
+        <button class="btn btn-primary" id="btn-login-profile" style="min-height: 40px; padding: 0.5rem 1rem;">Sign In</button>
+        <div class="avatar-wrapper" style="display: none;" id="user-avatar-block">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80" alt="Avatar User" class="avatar">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HOME VIEW -->
+  <main id="home-view" class="app-view active">
+    <!-- Hero Banner Section -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="headline-xl">Perjalanan Lintas Kota Lebih Mudah</h1>
+        <p class="body-lg">Layanan shuttle premium menghubungkan Kalimantan Selatan dan Kalimantan Tengah dengan kenyamanan ekstra.</p>
+      </div>
+    </section>
+
+    <!-- Booking Search Form Widget -->
+    <div class="search-widget-container">
+      <form class="search-widget" id="search-form">
+        <div class="form-group">
+          <label class="label-md"><i data-feather="map-pin" style="width:16px;"></i> Asal</label>
+          <select class="form-control" id="search-origin" required>
+            <option value="" disabled selected>Pilih Kota Asal</option>
+            <option value="Banjarmasin">Banjarmasin (Kalsel)</option>
+            <option value="Banjarbaru">Banjarbaru (Kalsel)</option>
+            <option value="Palangkaraya">Palangkaraya (Kalteng)</option>
+            <option value="Sampit">Sampit (Kalteng)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label class="label-md"><i data-feather="map-pin" style="width:16px;"></i> Tujuan</label>
+          <select class="form-control" id="search-destination" required>
+            <option value="" disabled selected>Pilih Kota Tujuan</option>
+            <option value="Banjarmasin">Banjarmasin (Kalsel)</option>
+            <option value="Banjarbaru">Banjarbaru (Kalsel)</option>
+            <option value="Palangkaraya">Palangkaraya (Kalteng)</option>
+            <option value="Sampit">Sampit (Kalteng)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="label-md"><i data-feather="calendar" style="width:16px;"></i> Tanggal</label>
+          <input type="date" class="form-control" id="search-date" required>
+        </div>
+
+        <div class="form-group">
+          <label class="label-md"><i data-feather="users" style="width:16px;"></i> Penumpang</label>
+          <select class="form-control" id="search-passengers">
+            <option value="1">1 Orang</option>
+            <option value="2">2 Orang</option>
+            <option value="3">3 Orang</option>
+            <option value="4">4 Orang</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-icon">
+          <i data-feather="search"></i> Cari
+        </button>
+      </form>
+    </div>
+
+    <!-- Highlights Section -->
+    <section class="section container">
+      <div class="section-header">
+        <h2 class="headline-lg">Mengapa Memilih BorneoJourney?</h2>
+        <p class="body-md">Standar pelayanan premium untuk kenyamanan perjalanan Anda.</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card door-to-door">
+          <div class="feature-icon-wrapper">
+            <i data-feather="truck"></i>
+          </div>
+          <h3>Door-to-Door</h3>
+          <p class="body-sm">Kami menjemput dan mengantar Anda tepat dari depan pintu rumah hingga alamat tujuan tanpa repot transit.</p>
+        </div>
+
+        <div class="feature-card tracking">
+          <div class="feature-icon-wrapper">
+            <i data-feather="navigation"></i>
+          </div>
+          <h3>Pelacakan Real-time</h3>
+          <p class="body-sm">Pantau posisi armada kami secara langsung melalui aplikasi untuk ketenangan pikiran selama perjalanan.</p>
+        </div>
+
+        <div class="feature-card payment">
+          <div class="feature-icon-wrapper">
+            <i data-feather="shield"></i>
+          </div>
+          <h3>Pembayaran Aman</h3>
+          <p class="body-sm">Transaksi digital yang terenkripsi dan aman dengan berbagai pilihan metode pembayaran modern.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Routes Section -->
+    <section class="section container" style="padding-top: 0;">
+      <div class="routes-header">
+        <div class="left">
+          <h2 class="headline-lg">Rute Populer</h2>
+          <p class="body-md">Destinasi favorit pelanggan setia kami.</p>
+        </div>
+        <a href="#" id="view-all-schedules-link">Lihat Semua Rute <i data-feather="arrow-right" style="width:16px;"></i></a>
+      </div>
+
+      <div class="routes-grid">
+        <!-- Route 1 -->
+        <div class="route-card" data-origin="Banjarmasin" data-destination="Palangkaraya">
+          <div class="route-image-wrapper">
+            <img src="assets/images/banjarmasin.jpg" alt="Banjarmasin ke Palangkaraya">
+            <div class="route-badge label-bold">TERSEDIA</div>
+          </div>
+          <div class="route-info">
+            <div class="route-cities headline-md">
+              <span>Banjarmasin</span>
+              <span class="route-arrow">&rarr;</span>
+              <span>Palangkaraya</span>
+            </div>
+            <p class="route-price-label body-sm">Mulai dari</p>
+            <div class="route-price-row">
+              <span class="route-price">Rp 150k</span>
+              <div class="route-go-btn"><i data-feather="chevron-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Route 2 -->
+        <div class="route-card" data-origin="Banjarbaru" data-destination="Sampit">
+          <div class="route-image-wrapper">
+            <img src="assets/images/banjarbaru-sampit.jpg" alt="Banjarbaru ke Sampit">
+          </div>
+          <div class="route-info">
+            <div class="route-cities headline-md">
+              <span>Banjarbaru</span>
+              <span class="route-arrow">&rarr;</span>
+              <span>Sampit</span>
+            </div>
+            <p class="route-price-label body-sm">Mulai dari</p>
+            <div class="route-price-row">
+              <span class="route-price">Rp 200k</span>
+              <div class="route-go-btn"><i data-feather="chevron-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Route 3 -->
+        <div class="route-card" data-origin="Palangkaraya" data-destination="Banjarmasin">
+          <div class="route-image-wrapper">
+            <img src="assets/images/palangkaraya.jpg" alt="Palangkaraya ke Banjarmasin">
+            <div class="route-badge label-bold">TERSEDIA</div>
+          </div>
+          <div class="route-info">
+            <div class="route-cities headline-md">
+              <span>Palangkaraya</span>
+              <span class="route-arrow">&rarr;</span>
+              <span>Banjarmasin</span>
+            </div>
+            <p class="route-price-label body-sm">Mulai dari</p>
+            <div class="route-price-row">
+              <span class="route-price">Rp 150k</span>
+              <div class="route-go-btn"><i data-feather="chevron-right"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SCHEDULES SEARCH RESULTS VIEW -->
+  <section id="schedules-view" class="app-view container results-container">
+    <div class="schedules-header-row">
+      <div>
+        <a class="back-to-home" id="btn-back-home"><i data-feather="arrow-left"></i> Kembali ke Pencarian</a>
+        <h2 class="headline-lg" style="margin-top: 12px;" id="schedules-title-text">Jadwal Keberangkatan</h2>
+      </div>
+      <div id="results-count" class="body-md" style="font-weight: 600;">Menampilkan 4 Jadwal</div>
+    </div>
+
+    <!-- Hubungi Admin WA Notice Bar -->
+    <div class="admin-contact-notice" style="background-color: var(--surface-container-highest); border: 1px solid var(--outline-variant); border-radius: var(--rounded-lg); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; box-shadow: var(--shadow-level1);">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <i data-feather="message-circle" style="color: var(--secondary); width: 24px; height: 24px; flex-shrink: 0;"></i>
+        <p class="body-sm" style="color: var(--on-surface); margin: 0; line-height: 1.5;"><strong>Butuh jadwal keberangkatan khusus?</strong> Anda bisa memesan charter pribadi atau menanyakan jadwal tambahan langsung kepada Admin kami.</p>
+      </div>
+      <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-primary btn-icon btn-small" style="background-color: var(--secondary); border-color: var(--secondary); color: #ffffff; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
+        <i data-feather="phone" style="width: 14px; height: 14px;"></i> Hubungi Admin (WA)
+      </a>
+    </div>
+
+    <div class="schedules-grid">
+      <!-- Filter Sidebar -->
+      <aside class="filter-panel">
+        <div class="filter-section">
+          <h4 class="filter-title">Waktu Keberangkatan</h4>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" class="time-filter" value="pagi"> Pagi (06:00 - 12:00)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="time-filter" value="siang"> Siang (12:00 - 17:00)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="time-filter" value="malam"> Malam (17:00 - 23:00)
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h4 class="filter-title">Kelas Shuttle</h4>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" class="class-filter" value="Executive"> Executive (12 Kursi)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="class-filter" value="Royal Executive"> Royal Premier (9 Kursi VIP)
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h4 class="filter-title">Urutkan Harga</h4>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="radio" name="price-sort" class="sort-filter" value="low-high" checked> Terendah &rarr; Tertinggi
+            </label>
+            <label class="checkbox-label">
+              <input type="radio" name="price-sort" class="sort-filter" value="high-low"> Tertinggi &rarr; Terendah
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Schedules List -->
+      <div class="schedules-list" id="schedules-list-container">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FLEET TRACKING VIEW -->
+  <section id="tracking-view" class="app-view container section">
+    <div class="section-header" style="text-align: left; margin-bottom: 32px;">
+      <h2 class="headline-lg">Pelacakan Real-time Armada</h2>
+      <p class="body-md">Pantau posisi keberangkatan armada shuttle secara langsung untuk kenyamanan Anda.</p>
+    </div>
+
+    <div class="tracking-layout">
+      <!-- Active Shuttles List -->
+      <div class="tracking-sidebar" id="tracking-shuttles-list">
+        <!-- Filled via JS -->
+      </div>
+
+      <!-- Vector Tracking Map -->
+      <div class="tracking-map-wrapper">
+        <div id="map-tooltip-box" class="map-tooltip">Armada Info</div>
+        <svg viewBox="0 0 800 600" class="route-map-svg" id="tracking-svg-map">
+          <!-- Definitions for markers and shading -->
+          <defs>
+            <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00355f" />
+              <stop offset="100%" stop-color="#1b6d24" />
+            </linearGradient>
+            <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.15"/>
+            </filter>
+          </defs>
+
+          <!-- Kalimantan Landscapes and roads simplified visualization -->
+          <rect width="100%" height="100%" fill="#f4f7f6" />
+          
+          <!-- Forest Green areas decorative background -->
+          <path d="M 0 100 Q 200 80 400 150 T 800 100 L 800 600 L 0 600 Z" fill="#e8f0e8" opacity="0.6"/>
+          <path d="M 0 450 Q 300 480 500 400 T 800 500 L 800 600 L 0 600 Z" fill="#dceddc" opacity="0.4"/>
+
+          <!-- High-quality road paths connecting cities -->
+          <!-- Main Highway route: Sampit -> Palangkaraya -> Banjarbaru -> Banjarmasin -->
+          <!-- Coordinates:
+               Sampit: (120, 200)
+               Palangkaraya: (320, 260)
+               Banjarbaru: (560, 420)
+               Banjarmasin: (660, 450)
+          -->
+          <!-- General Road network -->
+          <path d="M 120 200 L 320 260 L 560 420 L 660 450" class="map-highway" />
+          
+          <!-- Active shuttle path highlight -->
+          <path d="M 120 200 L 320 260 L 560 420 L 660 450" class="map-route-active" id="active-map-path" />
+          <path d="" class="map-route-shuttle-path" id="shuttle-progress-path" />
+
+          <!-- City Landmarks/Nodes -->
+          <g>
+            <circle cx="120" cy="200" class="map-city-node" data-name="Sampit" />
+            <text x="120" y="175" class="map-city-label">Sampit</text>
+          </g>
+
+          <g>
+            <circle cx="320" cy="260" class="map-city-node" data-name="Palangkaraya" />
+            <text x="320" y="235" class="map-city-label">Palangkaraya</text>
+          </g>
+
+          <g>
+            <circle cx="560" cy="420" class="map-city-node" data-name="Banjarbaru" />
+            <text x="560" y="395" class="map-city-label">Banjarbaru</text>
+          </g>
+
+          <g>
+            <circle cx="660" cy="450" class="map-city-node" data-name="Banjarmasin" />
+            <text x="660" y="480" class="map-city-label">Banjarmasin</text>
+          </g>
+
+          <!-- Shuttle Marker (Pulsing marker overlay) -->
+          <g id="shuttle-marker-group" class="map-shuttle-marker" transform="translate(120, 200)">
+            <circle cx="0" cy="0" class="shuttle-pulse" />
+            <circle cx="0" cy="0" class="shuttle-dot" />
+            <!-- Tiny arrow inside pointing shuttle direction -->
+            <polygon points="-3,-4 5,0 -3,4" fill="#ffffff" transform="rotate(20)" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- MY BOOKINGS VIEW -->
+  <section id="bookings-view" class="app-view container section">
+    <div class="section-header" style="text-align: left; margin-bottom: 32px;">
+      <h2 class="headline-lg">Riwayat Pemesanan & Profil</h2>
+      <p class="body-md">Kelola detail profil penumpang dan tiket aktif perjalanan Anda.</p>
+    </div>
+
+    <div class="profile-grid-container" id="bookings-grid-layout">
+      <!-- Left Side: Profile Card (hidden by default, shown via JS if logged in as customer) -->
+      <div class="profile-card-left" id="profile-edit-card" style="display: none;">
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Profile Avatar" class="profile-avatar-large">
+        <h4 class="headline-md" style="font-size:18px;" id="profile-card-name">Nama Pengguna</h4>
+        <p class="body-sm" id="profile-card-email" style="color: var(--on-surface-variant); margin-bottom: 24px;">email@domain.com</p>
+        
+        <form id="profile-update-form" style="text-align: left;">
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="label-md">Nama Lengkap</label>
+            <input type="text" class="form-control" id="profile-name" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="label-md">Nomor WhatsApp</label>
+            <input type="tel" class="form-control" id="profile-phone" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="label-md">Nomor NIK (KTP)</label>
+            <input type="text" class="form-control" id="profile-nik" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; min-height: 40px; font-size:13px;">Simpan Perubahan</button>
+        </form>
+      </div>
+
+      <!-- Right Side: Bookings list -->
+      <div class="bookings-list" id="bookings-list-container" style="grid-column: 1 / span 2;">
+        <!-- Generated via JS or Empty state -->
+        <div class="empty-bookings-state">
+          <i data-feather="calendar" style="width: 48px; height: 48px; margin: 0 auto 16px auto; color: var(--outline-variant);"></i>
+          <h3 class="headline-md" style="margin-bottom: 8px;">Belum Ada Riwayat Perjalanan</h3>
+          <p class="body-md" style="color: var(--on-surface-variant); margin-bottom: 24px;">Silakan lakukan pencarian rute dan pesan tiket shuttle pertama Anda.</p>
+          <button class="btn btn-primary" onclick="document.querySelector('.nav-link[data-target=home-view]').click()">Cari Tiket Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS & TESTIMONIALS VIEW -->
+  <section id="reviews-view" class="app-view container section">
+    <div class="section-header" style="text-align: left; margin-bottom: 32px;">
+      <h2 class="headline-lg">Ulasan & Rating Penumpang</h2>
+      <p class="body-md">Feedback dari penumpang yang telah menikmati perjalanan premium bersama BorneoExpress.</p>
+    </div>
+
+    <!-- Rating overview block -->
+    <div class="reviews-summary-card">
+      <div class="rating-huge">
+        <div class="rating-number">4.8</div>
+        <div class="rating-stars" id="overview-stars">
+          <!-- Populated by feather icon stars -->
+        </div>
+        <div class="body-sm" style="color: var(--on-surface-variant); margin-top: 4px;">Dari 1,248 Penumpang</div>
+      </div>
+
+      <div class="rating-bars">
+        <div class="rating-bar-row">
+          <span>5 <i data-feather="star" style="width:12px; height:12px; fill:#fbbf24; stroke:#fbbf24;"></i></span>
+          <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 85%;"></div></div>
+          <span>85%</span>
+        </div>
+        <div class="rating-bar-row">
+          <span>4 <i data-feather="star" style="width:12px; height:12px; fill:#fbbf24; stroke:#fbbf24;"></i></span>
+          <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 10%;"></div></div>
+          <span>10%</span>
+        </div>
+        <div class="rating-bar-row">
+          <span>3 <i data-feather="star" style="width:12px; height:12px; fill:#fbbf24; stroke:#fbbf24;"></i></span>
+          <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 3%;"></div></div>
+          <span>3%</span>
+        </div>
+        <div class="rating-bar-row">
+          <span>2 <i data-feather="star" style="width:12px; height:12px; fill:#fbbf24; stroke:#fbbf24;"></i></span>
+          <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 1%;"></div></div>
+          <span>1%</span>
+        </div>
+        <div class="rating-bar-row">
+          <span>1 <i data-feather="star" style="width:12px; height:12px; fill:#fbbf24; stroke:#fbbf24;"></i></span>
+          <div class="rating-bar-bg"><div class="rating-bar-fill" style="width: 1%;"></div></div>
+          <span>1%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Grid Layout -->
+    <div class="reviews-layout">
+      <!-- Review feed list -->
+      <div class="reviews-list" id="reviews-feed-container">
+        <!-- Feed filled via JS -->
+      </div>
+
+      <!-- Add Review Form -->
+      <div class="review-form-card">
+        <h3>Tulis Ulasan Perjalanan</h3>
+        <form id="add-review-form">
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="label-md">Nama Lengkap</label>
+            <input type="text" class="form-control" id="review-author-input" placeholder="Masukkan nama Anda" required>
+          </div>
+          
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="label-md">Rating Perjalanan</label>
+            <select class="form-control" id="review-rating-input" required>
+              <option value="5">Bintang 5 - Sangat Memuaskan</option>
+              <option value="4">Bintang 4 - Memuaskan</option>
+              <option value="3">Bintang 3 - Cukup</option>
+              <option value="2">Bintang 2 - Kurang Memuaskan</option>
+              <option value="1">Bintang 1 - Buruk</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label class="label-md">Tulis Tanggapan Anda</label>
+            <textarea class="form-control" id="review-text-input" rows="4" style="height: auto; padding: 12px;" placeholder="Ceritakan kenyamanan kendaraan, keramahan driver, ketepatan waktu..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Ulasan</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT PAGE VIEW -->
+  <section id="support-view" class="app-view container section">
+    <div class="section-header" style="text-align: left; margin-bottom: 32px;">
+      <h2 class="headline-lg">Pusat Bantuan & Layanan Pelanggan</h2>
+      <p class="body-md">Kami siap melayani kebutuhan informasi dan penyelesaian kendala perjalanan Anda 24/7.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+      <div style="background-color: var(--surface-container-lowest); border-radius: var(--rounded-lg); padding: 32px; box-shadow: var(--shadow-level1);">
+        <h3 class="headline-md" style="color: var(--primary); margin-bottom: 24px;">Pertanyaan Sering Diajukan (FAQ)</h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <h4 style="font-weight:700; font-size:16px; margin-bottom: 8px; color: var(--primary-container)">Apakah ada layanan penjemputan alamat (door-to-door)?</h4>
+            <p class="body-sm" style="color: var(--on-surface-variant)">Ya, tarif tiket kami sudah mencakup penjemputan dan pengantaran alamat di area jangkauan kota Banjarmasin, Banjarbaru, Palangkaraya, dan Sampit.</p>
+          </div>
+          <div style="border-top: 1px solid var(--surface-container-high); padding-top: 16px;">
+            <h4 style="font-weight:700; font-size:16px; margin-bottom: 8px; color: var(--primary-container)">Berapa jam estimasi perjalanan Kalsel - Kalteng?</h4>
+            <p class="body-sm" style="color: var(--on-surface-variant)">Perjalanan Banjarmasin ke Palangkaraya berkisar antara 3 - 4 jam, sedangkan rute Banjarbaru ke Sampit membutuhkan waktu sekitar 6 - 7 jam tergantung kondisi jalan.</p>
+          </div>
+          <div style="border-top: 1px solid var(--surface-container-high); padding-top: 16px;">
+            <h4 style="font-weight:700; font-size:16px; margin-bottom: 8px; color: var(--primary-container)">Bagaimana kebijakan pembatalan / reschedule tiket?</h4>
+            <p class="body-sm" style="color: var(--on-surface-variant)">Pembatalan atau perubahan jadwal tiket dapat diajukan paling lambat 6 jam sebelum keberangkatan dengan menghubungi CS BorneoExpress.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background-color: var(--surface-container-lowest); border-radius: var(--rounded-lg); padding: 32px; box-shadow: var(--shadow-level1); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <h3 class="headline-md" style="color: var(--primary); margin-bottom: 16px;">Hubungi Kami</h3>
+          <p class="body-md" style="color: var(--on-surface-variant); margin-bottom: 24px;">Gunakan kontak di bawah ini atau mulailah percakapan langsung dengan asisten virtual kami melalui tombol chat di pojok kanan bawah.</p>
+          
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 40px; height: 40px; border-radius: var(--rounded-full); background-color: var(--secondary-container); color: var(--on-secondary-container); display: flex; align-items: center; justify-content: center;">
+                <i data-feather="phone" style="width: 18px;"></i>
+              </div>
+              <div>
+                <span class="label-md" style="display: block; color: var(--on-surface-variant)">Hotline WhatsApp</span>
+                <strong style="font-size: 15px; color: var(--primary)">+62 811-5555-900</strong>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 40px; height: 40px; border-radius: var(--rounded-full); background-color: var(--primary-fixed); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+                <i data-feather="mail" style="width: 18px;"></i>
+              </div>
+              <div>
+                <span class="label-md" style="display: block; color: var(--on-surface-variant)">Email Pelayanan</span>
+                <strong style="font-size: 15px; color: var(--primary)">support@borneoexpress.co.id</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 32px; background-color: var(--surface-container-low); padding: 16px; border-radius: var(--rounded-default)">
+          <p class="body-sm" style="color: var(--on-surface-variant)"><strong>Butuh Bantuan Cepat?</strong> Silakan klik ikon chat obrolan berwarna biru di kanan bawah layar untuk mengobrol secara interaktif dengan Customer Service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING STEP-BY-STEP MODAL (LEVEL 2 ELEVATION) -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="headline-md" id="modal-booking-title">Form Pemesanan Tiket</h3>
+        <button class="modal-close" id="btn-close-modal">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Step indicators -->
+        <div class="step-indicator">
+          <div class="step-item active" id="step-node-1">
+            <div class="step-number">1</div>
+            <span class="step-label">Detail Penumpang</span>
+          </div>
+          <div class="step-item" id="step-node-2">
+            <div class="step-number">2</div>
+            <span class="step-label">Pembayaran</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Passenger Info & Address Details -->
+        <div class="booking-step active" id="booking-step-1">
+          <h4 class="headline-md" style="font-size: 18px; margin-bottom: 16px; color: var(--primary)">Detail Penumpang & Layanan Antar-Jemput</h4>
+          <form id="passenger-details-form">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div class="form-group">
+                <label class="label-md">Nama Lengkap Penumpang</label>
+                <input type="text" class="form-control" id="passenger-name" placeholder="Sesuai KTP/SIM" required>
+              </div>
+              <div class="form-group">
+                <label class="label-md">Nomor WhatsApp/HP</label>
+                <input type="tel" class="form-control" id="passenger-phone" placeholder="Contoh: 0812XXXXXXXX" required>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div class="form-group">
+                <label class="label-md">Nomor Identitas (NIK/KTP)</label>
+                <input type="text" class="form-control" id="passenger-nik" placeholder="16 digit NIK" required>
+              </div>
+              <div class="form-group">
+                <label class="label-md">Saluran Notifikasi</label>
+                <div class="form-control" style="background-color: var(--surface-container-low); display: flex; align-items: center; gap: 8px; color: var(--on-surface-variant); font-weight: 600; min-height: 40px; border: 1px solid var(--outline-variant); border-radius: var(--rounded-sm);">
+                  <i data-feather="message-circle" style="color: var(--secondary); width: 16px; height: 16px;"></i> WhatsApp Saja
+                </div>
+                <input type="hidden" id="passenger-notification" value="whatsapp">
+              </div>
+            </div>
+
+            <div class="address-grid">
+              <div class="form-group">
+                <label class="label-md"><i data-feather="map-pin" style="width:14px; vertical-align: middle;"></i> Alamat Penjemputan (Asal)</label>
+                <textarea class="form-control" id="passenger-pickup-address" rows="3" style="height: auto; padding: 10px;" placeholder="Tulis jalan, nomor rumah, RT/RW, dan patokan penjemputan" required></textarea>
+              </div>
+              <div class="form-group">
+                <label class="label-md"><i data-feather="map-pin" style="width:14px; vertical-align: middle;"></i> Alamat Pengantaran (Tujuan)</label>
+                <textarea class="form-control" id="passenger-dropoff-address" rows="3" style="height: auto; padding: 10px;" placeholder="Tulis alamat lengkap destinasi tujuan Anda" required></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <!-- Step 2: Payment Simulation -->
+        <div class="booking-step" id="booking-step-2">
+          <h4 class="headline-md" style="font-size: 18px; margin-bottom: 16px; color: var(--primary)">Selesaikan Pembayaran Digital</h4>
+          
+          <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px;">
+            <!-- Select Payment Methods -->
+            <div>
+              <p class="body-sm" style="color: var(--on-surface-variant); margin-bottom: 12px;">Pilih salah satu metode pembayaran di bawah untuk melakukan simulasi transaksi:</p>
+              
+              <p class="body-sm" style="color: var(--on-surface-variant); margin-bottom: 8px; font-weight: 700;">Metode E-Wallet:</p>
+              <div class="payment-methods" style="margin-bottom: 16px;">
+                <div class="payment-method-card active" data-method="gopay">
+                  <input type="radio" name="pay-method" id="pay-gopay" checked>
+                  <label for="pay-gopay" style="cursor: pointer; display: flex; flex-direction: column;">
+                    <strong style="font-size: 14px;">GoPay / OVO</strong>
+                    <span style="font-size: 11px; color: var(--on-surface-variant);">Instan & Otomatis</span>
+                  </label>
+                </div>
+
+                <div class="payment-method-card" data-method="dana">
+                  <input type="radio" name="pay-method" id="pay-dana">
+                  <label for="pay-dana" style="cursor: pointer; display: flex; flex-direction: column;">
+                    <strong style="font-size: 14px;">DANA / ShopeePay</strong>
+                    <span style="font-size: 11px; color: var(--on-surface-variant);">Instan QRIS</span>
+                  </label>
+                </div>
+              </div>
+
+              <p class="body-sm" style="color: var(--on-surface-variant); margin-bottom: 8px; font-weight: 700;">Virtual Account Bank:</p>
+              <div class="payment-methods" style="margin-bottom: 24px; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                <div class="payment-method-card" data-method="va-bca" style="padding: 10px;">
+                  <input type="radio" name="pay-method" id="pay-va-bca">
+                  <label for="pay-va-bca" style="cursor: pointer; display: flex; flex-direction: column;">
+                    <strong style="font-size: 13px;">BCA VA</strong>
+                    <span style="font-size: 10px; color: var(--on-surface-variant);">Verifikasi Instan</span>
+                  </label>
+                </div>
+
+                <div class="payment-method-card" data-method="va-mandiri" style="padding: 10px;">
+                  <input type="radio" name="pay-method" id="pay-va-mandiri">
+                  <label for="pay-va-mandiri" style="cursor: pointer; display: flex; flex-direction: column;">
+                    <strong style="font-size: 13px;">Mandiri VA</strong>
+                    <span style="font-size: 10px; color: var(--on-surface-variant);">Verifikasi Instan</span>
+                  </label>
+                </div>
+
+                <div class="payment-method-card" data-method="va-bni" style="padding: 10px;">
+                  <input type="radio" name="pay-method" id="pay-va-bni">
+                  <label for="pay-va-bni" style="cursor: pointer; display: flex; flex-direction: column;">
+                    <strong style="font-size: 13px;">BNI VA</strong>
+                    <span style="font-size: 10px; color: var(--on-surface-variant);">Verifikasi Instan</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Payment Details simulator prompt -->
+              <div class="payment-method-details" id="pay-details-gopay">
+                <p><strong>Simulasi E-Wallet GoPay/OVO:</strong> Setelah menekan "Bayar Sekarang", sistem akan menampilkan simulasi hitungan mundur verifikasi e-Wallet. Silakan klik bayar untuk menyelesaikan pemesanan.</p>
+              </div>
+              <div class="payment-method-details" id="pay-details-dana" style="display: none;">
+                <p><strong>Simulasi QRIS DANA/ShopeePay:</strong> Tiket akan diverifikasi secara otomatis menggunakan kode QRIS statis setelah Anda klik bayar.</p>
+              </div>
+              <div class="payment-method-details" id="pay-details-va-bca" style="display: none;">
+                <p><strong>BCA Virtual Account:</strong> Transfer ke nomor VA <strong>80777 + nomor HP Anda</strong>. Pembayaran akan terverifikasi secara otomatis.</p>
+              </div>
+              <div class="payment-method-details" id="pay-details-va-mandiri" style="display: none;">
+                <p><strong>Mandiri Virtual Account:</strong> Transfer ke nomor VA <strong>88908 + nomor HP Anda</strong>. Pembayaran akan terverifikasi secara otomatis.</p>
+              </div>
+              <div class="payment-method-details" id="pay-details-va-bni" style="display: none;">
+                <p><strong>BNI Virtual Account:</strong> Transfer ke nomor VA <strong>8277 + nomor HP Anda</strong>. Pembayaran akan terverifikasi secara otomatis.</p>
+              </div>
+            </div>
+
+            <!-- Booking Summary -->
+            <div class="booking-summary-box">
+              <h5 style="font-family: 'Manrope', sans-serif; font-weight: 700; color: var(--primary); margin-bottom: 12px; font-size: 15px;">Rincian Harga Tiket:</h5>
+              
+              <div class="summary-row">
+                <span id="summary-trip-details">Banjarmasin &rarr; Palangkaraya</span>
+                <span id="summary-trip-qty">1x Tiket</span>
+              </div>
+              
+              <div class="summary-row">
+                <span>Shuttle Class</span>
+                <span id="summary-trip-class">Executive</span>
+              </div>
+
+
+              <div class="summary-row">
+                <span>Biaya Layanan Door-to-Door</span>
+                <span style="color: var(--secondary); font-weight:600;">GRATIS</span>
+              </div>
+
+              <div class="summary-row" id="summary-event-row" style="display: none;">
+                <span id="summary-event-label">Penyesuaian Event</span>
+                <span id="summary-event-value" style="color: var(--error); font-weight: 600;">+Rp 0</span>
+              </div>
+
+              <div class="summary-row total">
+                <span>Total Pembayaran</span>
+                <span id="summary-trip-price">Rp 150.000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Ticket Screen -->
+        <div class="booking-step" id="booking-step-success">
+          <div class="ticket-confirmed-container">
+            <div class="ticket-success-icon">
+              <i data-feather="check"></i>
+            </div>
+            <h3 class="headline-md" style="color: var(--secondary)">Pembayaran Berhasil Dikonfirmasi!</h3>
+            <p class="body-sm" style="color: var(--on-surface-variant); max-width: 500px; margin: 8px auto 0 auto;">E-Tiket Anda telah terbit dan siap digunakan. Detail tiket dikirim via WhatsApp simulator ke nomor Anda.</p>
+
+            <!-- Rendered ticket card -->
+            <div class="e-ticket" id="rendered-ticket-body">
+              <!-- Content replaced dynamically by JS -->
+            </div>
+
+            <div style="margin-top: 32px;">
+              <button class="btn btn-outline" id="btn-ticket-close" style="margin-right: 12px;">Kembali ke Home</button>
+              <button class="btn btn-primary btn-icon" id="btn-ticket-download">
+                <i data-feather="download"></i> Simpan E-Tiket
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action CTAs footer -->
+        <div class="step-actions" id="booking-modal-actions">
+          <button class="btn btn-outline" id="btn-prev-step" style="visibility: hidden;">Sebelumnya</button>
+          <button class="btn btn-primary" id="btn-next-step">Selanjutnya</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN VIEW PANEL -->
+  <section id="admin-view" class="app-view container section admin-view-container">
+    <div class="admin-header-row">
+      <div>
+        <h2 class="headline-lg">Dashboard Administrator</h2>
+        <p class="body-md">Kelola rute, jadwal operasional shuttle, dan pantau review penumpang.</p>
+      </div>
+      <button class="btn btn-outline" id="btn-admin-logout">Keluar Admin</button>
+    </div>
+
+    <!-- Admin Sub-tabs -->
+    <div class="admin-tabs-bar">
+      <button class="admin-tab-btn active" data-tab="admin-schedules-tab">Kelola Jadwal Keberangkatan</button>
+      <button class="admin-tab-btn" data-tab="admin-routes-tab">Kelola Rute & Kota</button>
+      <button class="admin-tab-btn" data-tab="admin-pricing-tab">Atur Harga & Simulasi</button>
+      <button class="admin-tab-btn" data-tab="admin-events-tab">Pengaturan Harga Event</button>
+      <button class="admin-tab-btn" data-tab="admin-reviews-tab">Kelola Ulasan Pelanggan</button>
+    </div>
+
+    <!-- Tab 1: Schedules Tab -->
+    <div class="admin-tab-content active" id="admin-schedules-tab">
+      <div class="admin-grid">
+        <!-- Left Side: Add/Edit Schedule Form -->
+        <div style="background-color: var(--surface-container-lowest); border: 1px solid var(--outline-variant); border-radius: var(--rounded-lg); padding: 24px; box-shadow: var(--shadow-level1);">
+          <h3 class="headline-md" style="font-size:18px; margin-bottom: 20px; color: var(--primary);" id="admin-schedule-form-title">Tambah Jadwal Baru</h3>
+          <form id="admin-schedule-form">
+            <input type="hidden" id="admin-schedule-id">
+            
+            <div class="form-group" style="margin-bottom: 12px;">
+              <label class="label-md">Kota Asal</label>
+              <select class="form-control" id="admin-schedule-origin" required>
+                <option value="Banjarmasin">Banjarmasin</option>
+                <option value="Banjarbaru">Banjarbaru</option>
+                <option value="Palangkaraya">Palangkaraya</option>
+                <option value="Sampit">Sampit</option>
+              </select>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 12px;">
+               <label class="label-md">Kota Tujuan</label>
+               <select class="form-control" id="admin-schedule-destination" required>
+                 <option value="Banjarmasin">Banjarmasin</option>
+                 <option value="Banjarbaru">Banjarbaru</option>
+                 <option value="Palangkaraya">Palangkaraya</option>
+                 <option value="Sampit">Sampit</option>
+               </select>
+             </div>
+
+             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+               <div class="form-group">
+                 <label class="label-md">Jam Berangkat</label>
+                 <input type="text" class="form-control" id="admin-schedule-deptime" placeholder="08:00" required>
+               </div>
+               <div class="form-group">
+                 <label class="label-md">Jam Tiba</label>
+                 <input type="text" class="form-control" id="admin-schedule-arrtime" placeholder="11:30" required>
+               </div>
+             </div>
+
+             <div class="form-group" style="margin-bottom: 12px;">
+               <label class="label-md">Kelas & Armada</label>
+               <select class="form-control" id="admin-schedule-class" required>
+                 <option value="Executive">Executive (12 Kursi)</option>
+                 <option value="Royal Executive">Royal Executive (9 Kursi VIP)</option>
+               </select>
+             </div>
+
+             <div class="form-group" style="margin-bottom: 12px;">
+               <label class="label-md">Harga Tiket (Rp)</label>
+               <input type="number" class="form-control" id="admin-schedule-price" placeholder="150000" required>
+             </div>
+
+             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+               <div class="form-group">
+                 <label class="label-md">Nomor Plat Mobil</label>
+                 <input type="text" class="form-control" id="admin-schedule-plate" placeholder="DA 1234 A" required>
+               </div>
+               <div class="form-group">
+                 <label class="label-md">Status</label>
+                 <select class="form-control" id="admin-schedule-status">
+                   <option value="on-time">On Time</option>
+                   <option value="delayed">Delayed</option>
+                 </select>
+               </div>
+             </div>
+
+             <button type="submit" class="btn btn-primary" id="btn-admin-schedule-submit" style="width: 100%;">Simpan Jadwal</button>
+             <button type="button" class="btn btn-outline" id="btn-admin-schedule-cancel" style="width: 100%; margin-top:8px; display:none;">Batal Edit</button>
+           </form>
+         </div>
+
+         <!-- Right Side: Schedules Table list -->
+         <div class="admin-table-wrapper">
+           <table class="admin-table">
+             <thead>
+               <tr>
+                 <th>Rute / Jam</th>
+                 <th>Kelas</th>
+                 <th>Harga</th>
+                 <th>Mobil</th>
+                 <th>Status</th>
+                 <th>Aksi</th>
+               </tr>
+             </thead>
+             <tbody id="admin-schedules-table-body">
+               <!-- Populated via JS -->
+             </tbody>
+           </table>
+         </div>
+       </div>
+     </div>
+
+     <!-- Tab 2: Reviews Management -->
+     <div class="admin-tab-content" id="admin-reviews-tab">
+       <div style="background-color: var(--surface-container-lowest); border: 1px solid var(--outline-variant); border-radius: var(--rounded-lg); padding: 24px; box-shadow: var(--shadow-level1);">
+         <h3 class="headline-md" style="font-size:18px; margin-bottom: 16px; color: var(--primary);">Review Ulasan Pelanggan</h3>
+         
+         <div class="admin-table-wrapper">
+           <table class="admin-table">
+             <thead>
+               <tr>
+                 <th>Nama Pelanggan</th>
+                 <th>Tanggal</th>
+                 <th>Rating</th>
+                 <th>Ulasan / Feedback</th>
+                 <th style="width: 120px;">Aksi</th>
+               </tr>
+             </thead>
+             <tbody id="admin-reviews-table-body">
+               <!-- Populated via JS -->
+             </tbody>
+           </table>
+          </div>
+        </div>
+      </div>
+
+    <!-- Tab 2: Routes & Cities Tab -->
+    <div class="admin-tab-content" id="admin-routes-tab">
+      <div class="admin-grid">
+        <!-- Left Side: Add City Form -->
+        <div style="background-color: var(--surface-container-lowest); border: 1px solid var(--outline-variant); border-radius: var(--rounded-lg); padding: 24px; box-shadow: var(--shadow-level1);">
+          <h3 class="headline-md" style="font-size:18px; margin-bottom: 20px; color: var(--primary);">Tambah Kota Baru</h3>
+          <form id="admin-city-form">
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label class="label-md">Nama Kota / Wilayah</label>
+              <input type="text" class="form-control" id="admin-city-name" placeholder="Contoh: Amuntai" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Tambah Kota</button>
+          </form>
+        </div>
+
+        <!-- Right Side: Cities List Table -->
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nama Kota / Wilayah</th>
+                <th style="width: 120px; text-align: center;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="admin-cities-table-body">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 4: Route Pricing Matrix & Simulator -->
+    <div class="admin-tab-content" id="admin-pricing-tab">
+      <div class="admin-grid" style="grid-template-columns: 360px 1fr;">
+        <!-- Left Side: Simulator and Edit Form -->
+        <div style="background-color: var(--surface-container-lowest); border: 1px solid var(--outline-variant); border-radius: var(--rounded-lg); padding: 24px; box-shadow: var(--shadow-level1);">
+          <h3 class="headline-md" style="font-size:18px; margin-bottom: 20px; color: var(--primary);">Simulasi & Edit Harga Rute</h3>
+          <form id="admin-sim-form">
+            <div class="form-group" style="margin-bottom: 12px;">
+              <label class="label-md">Kota Asal</label>
+              <select class="form-control" id="admin-sim-origin" required></select>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 12px;">
+              <label class="label-md">Kota Tujuan</label>
+              <select class="form-control" id="admin-sim-destination" required></select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 12px;">
+              <label class="label-md">Kelas Armada</label>
+              <select class="form-control" id="admin-sim-class" required>
+                <option value="Executive">Executive</option>
+                <option value="Royal Executive">Royal Executive</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label class="label-md">Tanggal Perjalanan (Simulasi)</label>
+              <input type="date" class="form-control" id="admin-sim-date" required>
+            </div>
+
+            <!-- Realtime breakdown card -->
+            <div style="background-color: var(--surface-container-low); border-radius: var(--rounded-md); padding: 16px; margin-bottom: 20px; border: 1px dashed var(--outline);">
+              <h4 style="font-size:13px; color:var(--primary); margin-bottom:12px; font-weight:700;">Rincian Harga Simulasi</h4>
+              <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:8px;">
+                <span>Harga Dasar Rute:</span>
+                <strong id="sim-base-price">Rp 0</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:8px;">
+                <span id="sim-event-name">Event Penyesuaian:</span>
+                <strong id="sim-event-adj" style="color:var(--error);">Rp 0</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:700; border-top:1px solid var(--outline-variant); padding-top:8px;">
+                <span>Harga Akhir:</span>
+                <span id="sim-final-price" style="color:var(--secondary);">Rp 0</span>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label class="label-md">Ubah Harga Dasar Rute (Rp)</label>
+              <input type="number" class="form-control" id="admin-sim-new-price" placeholder="Masukkan harga dasar baru">
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Terapkan Harga Dasar Baru</button>
+          </form>
+        </div>
+
+        <!-- Right Side: Pricing Matrix Table -->
+        <div>
+          <div style="background-color: var(--surface-container-lowest); border: 1px solid var(--outline-variant); border-radius: var(--rounded-lg); padding: 24px; box-shadow: var(--shadow-level1); margin-bottom:20px;">
+            <h3 class="headline-md" style="font-size:16px; color: var(--primary); margin-bottom:8px;">Petunjuk Pengelolaan Harga</h3>
+            <p class="body-sm" style="color: var(--on-surface-variant)">Gunakan form di sebelah kiri untuk memilih rute, menyimulasikan harga pada tanggal tertentu, serta memperbarui harga dasar. Mengubah harga dasar rute akan **langsung memperbarui harga seluruh jadwal keberangkatan** yang cocok dengan rute & kelas tersebut di halaman utama web.</p>
+          </div>
+
+          <div class="admin-table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Rute Perjalanan</th>
+                  <th>Kelas Shuttle</th>
+                  <th>Harga Dasar</th>
+                  <th style="width: 120px; text-align: center;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="admin-pricing-table-body">
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Event Pricing Tab -->
+    <div class="admin-tab-content" id="admin-events-tab">
+      <div class="admin-grid">
+        <!-- Left Side: Add Event Form -->
+        <div style="background-color: var(--surface-container-lowest); border: 1px solid var(--outline-variant); border-radius: var(--rounded-lg); padding: 24px; box-shadow: var(--shadow-level1);">
+          <h3 class="headline-md" style="font-size:18px; margin-bottom: 20px; color: var(--primary);">Pengaturan Event Baru</h3>
+          <form id="admin-event-form">
+            <div class="form-group" style="margin-bottom: 12px;">
+              <label class="label-md">Nama Event / Musim</label>
+              <input type="text" class="form-control" id="admin-event-name" placeholder="Contoh: Libur Lebaran" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+              <div class="form-group">
+                <label class="label-md">Tanggal Mulai</label>
+                <input type="date" class="form-control" id="admin-event-start" required>
+              </div>
+              <div class="form-group">
+                <label class="label-md">Tanggal Selesai</label>
+                <input type="date" class="form-control" id="admin-event-end" required>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 12px;">
+              <label class="label-md">Jenis Penyesuaian Harga</label>
+              <select class="form-control" id="admin-event-type" required>
+                <option value="markup-percent">Markup (Persentase +%)</option>
+                <option value="markup-nominal">Markup (Nominal +Rupiah)</option>
+                <option value="discount-percent">Diskon (Persentase -%)</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label class="label-md">Nilai Penyesuaian</label>
+              <input type="number" class="form-control" id="admin-event-value" placeholder="Contoh: 20 (untuk 20% / Rp 20.000)" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Simpan Aturan Event</button>
+          </form>
+        </div>
+
+        <!-- Right Side: Events Table list -->
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nama Event</th>
+                <th>Tanggal Berlaku</th>
+                <th>Penyesuaian</th>
+                <th style="width: 120px; text-align: center;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="admin-events-table-body">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- LOGIN MODAL -->
+   <div class="modal-overlay" id="login-modal">
+     <div class="modal-content" style="max-width: 420px;">
+       <div class="modal-header">
+         <h3 class="headline-md">Masuk ke BorneoJourney</h3>
+         <button class="modal-close" id="btn-close-login">&times;</button>
+       </div>
+       <div class="modal-body">
+         <div class="login-tabs">
+           <div class="login-tab active" data-role="customer">Pelanggan</div>
+           <div class="login-tab" data-role="admin">Admin</div>
+         </div>
+         
+         <div class="login-hint" id="login-credentials-hint">
+           <strong>Akun Demo Pelanggan:</strong><br>
+           Email: <span>pelanggan@mail.com</span><br>
+           Password: <span>user123</span><br>
+           <button class="quick-fill-btn" id="btn-quick-fill">Isi Otomatis</button>
+         </div>
+
+         <form id="login-form">
+           <input type="hidden" id="login-role" value="customer">
+           <div class="form-group" style="margin-bottom: 16px;">
+             <label class="label-md" id="login-identifier-label">Nomor WhatsApp atau Email</label>
+             <input type="text" class="form-control" id="login-email" required placeholder="Contoh: 0812XXXXXXXX atau nama@domain.com">
+           </div>
+           <div class="form-group" style="margin-bottom: 24px;">
+             <label class="label-md">Kata Sandi</label>
+             <input type="password" class="form-control" id="login-password" required placeholder="••••••••">
+           </div>
+           <button type="submit" class="btn btn-primary" style="width: 100%;">Masuk Sekarang</button>
+         </form>
+       </div>
+     </div>
+   </div>
+
+  <!-- FLOATING CHAT WIDGET (SUPPORT ENGINE) -->
+  <div class="chat-widget-floating">
+    <!-- Chat box panel -->
+    <div class="chat-box-container" id="cs-chat-box">
+      <div class="chat-header">
+        <div class="chat-agent-avatar">CS</div>
+        <div class="chat-agent-info">
+          <h4>Asisten BorneoJourney</h4>
+          <span>Online • Siap Membantu</span>
+        </div>
+      </div>
+      
+      <!-- Message thread list -->
+      <div class="chat-messages" id="chat-messages-thread">
+        <div class="chat-message incoming">
+          Halo! Saya asisten digital BorneoJourney. Ada yang bisa saya bantu hari ini terkait jadwal, pemesanan tiket, atau pelacakan armada Kalimantan kami?
+        </div>
+      </div>
+
+      <!-- Input controls -->
+      <form class="chat-input-area" id="cs-chat-form">
+        <input type="text" class="chat-input" id="cs-chat-input-text" placeholder="Tulis pesan bantuan Anda..." required autocomplete="off">
+        <button type="submit" class="chat-send-btn">
+          <i data-feather="send" style="width: 16px; height: 16px;"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Toggle button -->
+    <div class="chat-bubble-toggle" id="btn-chat-toggle">
+      <i data-feather="message-circle" id="chat-icon-active"></i>
+      <i data-feather="x" id="chat-icon-inactive" style="display: none;"></i>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Borneo<span class="logo-accent">Journey</span></h3>
+        <p class="body-sm">Layanan transportasi shuttle premium antarkota yang menghubungkan Kalimantan Selatan dan Kalimantan Tengah dengan komitmen keselamatan, ketepatan waktu, dan kenyamanan terbaik.</p>
+        <div class="body-sm" style="margin-top: 16px; display:flex; gap: 16px;">
+          <a href="#" style="color: var(--on-surface-variant);"><i data-feather="instagram" style="width:18px;"></i></a>
+          <a href="#" style="color: var(--on-surface-variant);"><i data-feather="facebook" style="width:18px;"></i></a>
+          <a href="#" style="color: var(--on-surface-variant);"><i data-feather="twitter" style="width:18px;"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Layanan kami</h4>
+        <ul>
+          <li><a href="#" onclick="document.querySelector('.nav-link[data-target=home-view]').click()">Jadwal Keberangkatan</a></li>
+          <li><a href="#" onclick="document.querySelector('.nav-link[data-target=tracking-view]').click()">Pelacakan Armada</a></li>
+          <li><a href="#" onclick="document.querySelector('.nav-link[data-target=reviews-view]').click()">Ulasan Penumpang</a></li>
+          <li><a href="#" onclick="document.querySelector('.nav-link[data-target=support-view]').click()">Dukungan CS</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Perusahaan</h4>
+        <ul>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Syarat & Ketentuan</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
+          <li><a href="#">Hubungi Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Borneo Journey. Seluruh hak cipta dilindungi undang-undang.</p>
+      <p>Dibuat untuk Konektivitas Kalimantan Selatan - Kalimantan Tengah.</p>
+    </div>
+  </footer>
+
+  <!-- Application Logic JS -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
