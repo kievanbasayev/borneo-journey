@@ -1,3 +1,8 @@
+// Initialize Supabase Client
+const SUPABASE_URL = 'https://oclkfidoncoobzxufwrn.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9jbGtmaWRvbmNvb2J6eHVmd3JuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxOTc2OTAsImV4cCI6MjEwMTc3MzY5MH0.k2wwBECGwBTZ-PrsKn9qiVxZ0dGEYoAF4mrIiugsDuI';
+const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
 // Initialize Feather Icons
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof feather !== 'undefined') {
@@ -151,6 +156,9 @@ function initApp() {
   }
   renderCityDropdowns();
   updateAuthUI();
+
+  // Try fetching latest database state from Supabase
+  initSupabaseData();
 }
 
 // 1. Navigation & View Routing
@@ -686,6 +694,25 @@ function processSimulatedPayment() {
     };
     
     STATE.myBookings.unshift(newBooking);
+    saveState();
+    
+    if (supabase) {
+      const dbBooking = {
+        code: newBooking.code,
+        passenger_name: newBooking.passenger.name,
+        passenger_phone: newBooking.passenger.phone,
+        passenger_nik: newBooking.passenger.nik,
+        pickup_address: newBooking.passenger.pickupAddress || '',
+        dropoff_address: newBooking.passenger.dropoffAddress || '',
+        passengers_count: newBooking.passengersCount,
+        date: newBooking.date,
+        payment_method: newBooking.paymentMethod,
+        status: newBooking.status,
+        schedule_id: newBooking.schedule.id,
+        final_price: newBooking.schedule.price
+      };
+      supabase.from('bookings').insert(dbBooking).then(() => {});
+    }
     
     // Trigger success layout
     document.getElementById('booking-modal-actions').style.display = 'none';
@@ -983,6 +1010,18 @@ function setupReviewsSystem() {
     };
     
     STATE.reviewsList.unshift(newReview);
+    saveState();
+    
+    if (supabase) {
+      supabase.from('reviews').insert({
+        author: newReview.author,
+        rating: newReview.rating,
+        date: newReview.date,
+        text: newReview.text
+      }).then(() => {
+        initSupabaseData();
+      });
+    }
     
     // Reset form fields
     form.reset();
@@ -1317,6 +1356,7 @@ function setupAdminDashboard() {
       
       STATE.cities.push(cityName);
       saveState();
+      if (supabase) supabase.from('cities').insert({ name: cityName }).then(() => {});
       document.getElementById('admin-city-name').value = '';
       
       renderCityDropdowns();
@@ -1349,6 +1389,7 @@ function setupAdminDashboard() {
       
       STATE.pricingEvents.push(newEvent);
       saveState();
+      if (supabase) supabase.from('pricing_events').insert(newEvent).then(() => {});
       
       adminEventForm.reset();
       renderAdminEvents();
@@ -1401,6 +1442,17 @@ function setupAdminDashboard() {
       });
 
       saveState();
+      if (supabase) {
+        supabase.from('route_prices').select('id').eq('origin', origin).eq('destination', destination).eq('class', sClass)
+          .then(({ data }) => {
+            if (data && data.length > 0) {
+              supabase.from('route_prices').update({ price: newPrice }).eq('id', data[0].id).then(() => {});
+            } else {
+              supabase.from('route_prices').insert({ origin, destination, class: sClass, price: newPrice }).then(() => {});
+            }
+          });
+        supabase.from('schedules').update({ price: newPrice }).eq('origin', origin).eq('destination', destination).eq('class', sClass).then(() => {});
+      }
       runPricingSimulation();
       renderAdminPricing();
       
@@ -1487,6 +1539,24 @@ function setupAdminDashboard() {
       }
 
       saveState();
+      if (supabase) {
+        const finalId = id || ('S-' + Math.floor(10 + Math.random() * 90));
+        const dbSched = {
+          id: finalId,
+          origin,
+          destination,
+          dep_time: depTime,
+          arr_time: arrTime,
+          duration,
+          class: sClass,
+          price,
+          status,
+          seats_available: id ? STATE.schedulesData.find(s => s.id === id).seatsAvailable : (sClass.includes('Royal') ? 9 : 12),
+          plate,
+          time_category: timeCategory
+        };
+        supabase.from('schedules').upsert(dbSched).then(() => {});
+      }
       resetAdminScheduleForm();
       renderAdminSchedules();
     });
@@ -1555,6 +1625,7 @@ function renderAdminSchedules() {
       if (confirm('Apakah Anda yakin ingin menghapus jadwal ini?')) {
         STATE.schedulesData = STATE.schedulesData.filter(s => s.id !== id);
         saveState();
+        if (supabase) supabase.from('schedules').delete().eq('id', id).then(() => {});
         renderAdminSchedules();
       }
     });
@@ -1604,8 +1675,12 @@ function renderAdminReviews() {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.getAttribute('data-idx'));
       if (confirm('Apakah Anda yakin ingin menghapus ulasan ini?')) {
+        const targetReview = STATE.reviewsList[idx];
         STATE.reviewsList.splice(idx, 1);
         saveState();
+        if (supabase && targetReview && targetReview.id) {
+          supabase.from('reviews').delete().eq('id', targetReview.id).then(() => {});
+        }
         renderAdminReviews();
       }
     });
@@ -1865,5 +1940,100 @@ function getPaymentMethodName(method) {
     case 'va-mandiri': return 'Mandiri Virtual Account';
     case 'va-bni': return 'BNI Virtual Account';
     default: return 'Pembayaran Digital';
+  }
+}
+
+async function initSupabaseData() {
+  if (!supabase) return;
+  try {
+    const { data: citiesData } = await supabase.from('cities').select('name');
+    if (citiesData && citiesData.length > 0) {
+      STATE.cities = citiesData.map(c => c.name);
+    }
+
+    const { data: rPrices } = await supabase.from('route_prices').select('origin, destination, class, price');
+    if (rPrices && rPrices.length > 0) {
+      STATE.routePrices = rPrices;
+    }
+
+    const { data: scheds } = await supabase.from('schedules').select('*');
+    if (scheds && scheds.length > 0) {
+      STATE.schedulesData = scheds.map(s => ({
+        id: s.id,
+        origin: s.origin,
+        destination: s.destination,
+        depTime: s.dep_time,
+        arrTime: s.arr_time,
+        duration: s.duration,
+        class: s.class,
+        price: s.price,
+        status: s.status,
+        seatsAvailable: s.seats_available,
+        plate: s.plate,
+        timeCategory: s.time_category
+      }));
+    }
+
+    const { data: revs } = await supabase.from('reviews').select('*');
+    if (revs && revs.length > 0) {
+      revs.sort((a, b) => b.id - a.id);
+      STATE.reviewsList = revs.map(r => ({
+        id: r.id,
+        author: r.author,
+        rating: r.rating,
+        date: r.date,
+        text: r.text
+      }));
+    }
+
+    const { data: events } = await supabase.from('pricing_events').select('*');
+    if (events && events.length > 0) {
+      STATE.pricingEvents = events;
+    }
+
+    const { data: bks } = await supabase.from('bookings').select('*');
+    if (bks && bks.length > 0) {
+      STATE.myBookings = bks.map(b => ({
+        code: b.code,
+        schedule: STATE.schedulesData.find(s => s.id === b.schedule_id) || {
+          id: b.schedule_id,
+          origin: '',
+          destination: '',
+          depTime: '',
+          arrTime: '',
+          duration: '',
+          class: '',
+          price: b.final_price,
+          status: 'on-time',
+          seatsAvailable: 0,
+          plate: ''
+        },
+        passenger: {
+          name: b.passenger_name,
+          phone: b.passenger_phone,
+          nik: b.passenger_nik,
+          pickupAddress: b.pickup_address,
+          dropoffAddress: b.dropoff_address
+        },
+        passengersCount: b.passengers_count,
+        date: b.date,
+        paymentMethod: b.payment_method,
+        status: b.status
+      }));
+    }
+    
+    saveState();
+    
+    renderCityDropdowns();
+    renderAdminCities();
+    renderAdminSchedules();
+    renderAdminPricing();
+    renderAdminEvents();
+    renderAdminReviews();
+    renderMyBookingsList();
+    renderReviewsFeed();
+    renderSchedules();
+  } catch (err) {
+    console.error('Failed to load data from Supabase, using local storage cache:', err);
   }
 }
